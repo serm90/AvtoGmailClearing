@@ -2,16 +2,18 @@ package sel3.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
 
+    public WebDriver driver;
+
     public LoginPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
-    public WebDriver driver;
 
     @FindBy(xpath = ".//*[@id='identifierId']")
     public WebElement loginField;
@@ -19,10 +21,10 @@ public class LoginPage {
     @FindBy(xpath = ".//*[@id='password']/div[1]/div/div[1]/input")
     public WebElement passwordField;
 
-    @FindBy(xpath = ".//*[@id='identifierNext']/content/span")
+    @FindBy(xpath = ".//*[@id='identifierNext']")
     public WebElement loginButton;
 
-    @FindBy(xpath = ".//*[@id='passwordNext']/content/span")
+    @FindBy(xpath = ".//*[@id='passwordNext']")
     public WebElement loginButtonNext;
 
     public void inputLogin(String login) {

@@ -14,7 +14,7 @@ public class TestDeleteMail extends BeforeAfterTest{
 
         LoginPage loginPage = new LoginPage(driver);
         MailBox mailBox = new MailBox(driver);
-        
+
         // регестрация юзера
          loginPage.inputLogin("testtaras1@gmail.com");
          loginPage.clickLoginButton();
