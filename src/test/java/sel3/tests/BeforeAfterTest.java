@@ -6,8 +6,6 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.AfterTest;
 import java.util.concurrent.TimeUnit;
 
-
-
 public class BeforeAfterTest {
 
     public  WebDriver driver;
@@ -23,5 +21,4 @@ public class BeforeAfterTest {
 
     @AfterTest
    public void tearDown(){driver.quit();}
-
 }

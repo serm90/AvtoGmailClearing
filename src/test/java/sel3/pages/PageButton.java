@@ -2,18 +2,29 @@ package sel3.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class MailBox {
+public class PageButton {
 
     public WebDriver driver;
-    public MailBox(WebDriver driver) {
+
+    public PageButton(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
 
+    @FindBy(xpath = ".//*[@id='identifierId']")
+    public WebElement loginField;
+
+    @FindBy(xpath = ".//*[@id='password']/div[1]/div/div[1]/input")
+    public WebElement passwordField;
+
+    @FindBy(xpath = ".//*[@id='identifierNext']")
+    public WebElement loginButton;
+
+    @FindBy(xpath = ".//*[@id='passwordNext']")
+    public WebElement loginButtonNext;
 
     @FindBy(xpath = ".//*[@class='gb_bb gbii']")
     public WebElement userProfileButton;
@@ -45,6 +56,21 @@ public class MailBox {
     @FindBy(xpath = ".//*[@gh='mtb']/div[1]/div[1]/div[2]/div[1]")
     public WebElement deleteForeverButton;
 
+    public void inputLogin(String login) {
+        loginField.sendKeys(login);
+    }
+
+    public void inputPassword(String password) {
+        passwordField.sendKeys(password);
+    }
+
+    public void clickLoginButton() {
+        loginButton.click();
+    }
+
+    public void clickLoginButtonNext() {
+        loginButtonNext.click();
+    }
 
     public String getUserMail() {
         String userMail = userProfile.getText();
@@ -85,35 +111,9 @@ public class MailBox {
         Thread.sleep(1000);
     }
 
-    public void deleteForever() throws InterruptedException {
+    public void ClickDeleteForever() throws InterruptedException {
         deleteForeverButton.click();
         Thread.sleep(3000);
     }
 
-    public void deleteMail() throws InterruptedException {
-        while (true) {
-            clickSelect();
-
-            if (deleteButton.isDisplayed()) {
-                clickDelete();
-                clickOk();
-            } else {
-                break;
-            }
-        }
-    }
-
-    public void deleteTrash() throws InterruptedException {
-            while (true) {
-                clickSelect();
-
-                if(deleteForeverButton.isDisplayed()) {
-                    deleteForever();
-                }else{
-                    break;
-                }
-            }
-    }
-
 }
-
