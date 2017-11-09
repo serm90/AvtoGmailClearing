@@ -54,6 +54,7 @@ public class PageButton {
     public WebElement emptyInBox;
 
     @FindBy(xpath = ".//*[@gh='mtb']/div[1]/div[1]/div[2]/div[1]")
+
     public WebElement deleteForeverButton;
 
     public void inputLogin(String login) {
