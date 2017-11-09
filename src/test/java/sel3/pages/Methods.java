@@ -12,11 +12,11 @@ public class Methods extends PageButton {
         super(driver);
     }
 
-    public void loginUser() throws InterruptedException {
+    public void loginUser(String mail, String password) throws InterruptedException {
         try {
-            inputLogin("testtaras1@gmail.com");
+            inputLogin(mail);
             clickLoginButton();
-            inputPassword("12345678azx");
+            inputPassword(password);
             Thread.sleep(500);
             clickLoginButtonNext();
             System.out.println("Юзер залогинился;");

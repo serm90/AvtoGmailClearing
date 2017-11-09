@@ -5,13 +5,15 @@ import org.testng.annotations.Test;
 
 public class TestDeleteMail extends BeforeAfterTest{
 
+
+
     @Test
      public void loginTest() throws InterruptedException {
 
         Methods mailBox = new Methods(driver);
 
         //логин юзера
-        mailBox.loginUser();
+        mailBox.loginUser(mail, password);
 
          //проверка подленности почтовика после входа
          mailBox.registrationTest();

@@ -10,6 +10,9 @@ public class BeforeAfterTest {
 
     public  WebDriver driver;
 
+    protected String mail = "testtaras1@gmail.com";
+    protected String password = "12345678azx";
+
     @BeforeTest
     public void setup() {
         System.setProperty("webdriver.chrome.driver", "C://Users//serg-qa//Downloads/chromedriver.exe");
