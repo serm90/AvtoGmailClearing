@@ -6,14 +6,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class MailBox {
+public class MailPage {
 
     public WebDriver driver;
-    public MailBox(WebDriver driver) {
+    public MailPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
-
 
     @FindBy(xpath = ".//*[@class='gb_bb gbii']")
     public WebElement userProfileButton;
@@ -44,6 +43,7 @@ public class MailBox {
 
     @FindBy(xpath = ".//*[@gh='mtb']/div[1]/div[1]/div[2]/div[1]")
     public WebElement deleteForeverButton;
+
 
 
     public String getUserMail() {
@@ -91,28 +91,39 @@ public class MailBox {
     }
 
     public void deleteMail() throws InterruptedException {
-        while (true) {
-            clickSelect();
-
-            if (deleteButton.isDisplayed()) {
-                clickDelete();
-                clickOk();
-            } else {
-                break;
+        try {
+            buttonMore();
+            buttonAllMail();
+            while (true) {
+                clickSelect();
+                if (deleteButton.isDisplayed()) {
+                    clickDelete();
+                    clickOk();
+                } else {
+                    System.out.println("Письма удалены с папки - Все письма;");
+                    break;
+                }
             }
+        } catch (Exception e){
+            System.out.println("Письма не удалены с папки - Все письма;");
         }
     }
 
     public void deleteTrash() throws InterruptedException {
+        try {
+            clickTrash();
             while (true) {
                 clickSelect();
-
-                if(deleteForeverButton.isDisplayed()) {
+                if (deleteForeverButton.isDisplayed()) {
                     deleteForever();
-                }else{
+                } else {
+                    System.out.println("Письма удалены с папки - Корзина;");
                     break;
                 }
             }
+        } catch (Exception e){
+            System.out.println("Письма не удалены с папки - Корзина;");
+        }
     }
 
 }

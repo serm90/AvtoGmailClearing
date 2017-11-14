@@ -6,11 +6,12 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.AfterTest;
 import java.util.concurrent.TimeUnit;
 
-
-
 public class BeforeAfterTest {
 
     public  WebDriver driver;
+
+    protected static String pass =  "12345678azx";
+    protected static String login = "testtaras1@gmail.com";
 
     @BeforeTest
     public void setup() {
