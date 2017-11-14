@@ -10,7 +10,7 @@ public class BeforeAfterTest {
 
     public  WebDriver driver;
 
-    protected static String pass =  "12345678azx";
+    protected static String password =  "12345678azx";
     protected static String login = "testtaras1@gmail.com";
 
     @BeforeTest

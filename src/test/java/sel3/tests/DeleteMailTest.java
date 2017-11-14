@@ -16,7 +16,7 @@ public class DeleteMailTest extends BeforeAfterTest{
         // регестрация юзера
          loginPage.inputLogin(login);
          loginPage.clickLoginButton();
-         loginPage.inputPassword(pass);
+         loginPage.inputPassword(password);
          loginPage.clickLoginButtonNext();
 
          //проверка входа на почтовик
