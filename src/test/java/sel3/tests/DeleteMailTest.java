@@ -13,7 +13,7 @@ public class DeleteMailTest extends BeforeAfterTest{
         LoginPage loginPage = new LoginPage(driver);
         MailPage mailPage = new MailPage(driver);
 
-        // регестрация юзера
+        // регестрация юзера в почте
          loginPage.inputLogin(login);
          loginPage.clickLoginButton();
          loginPage.inputPassword(password);
