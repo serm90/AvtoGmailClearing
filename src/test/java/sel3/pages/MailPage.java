@@ -3,15 +3,9 @@ package sel3.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class MailPage {
+public class MailPage extends Page {
 
-    public WebDriver driver;
-    public MailPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
-    }
 
     @FindBy(xpath = ".//*[@class='gb_bb gbii']")
     public WebElement userProfileButton;
@@ -43,6 +37,9 @@ public class MailPage {
     @FindBy(xpath = ".//*[@gh='mtb']/div[1]/div[1]/div[2]/div[1]")
     public WebElement deleteForeverButton;
 
+    public MailPage(WebDriver driver) {
+        super(driver);
+    }
 
 
     public String getUserMail() {
@@ -50,43 +47,43 @@ public class MailPage {
         return userMail;
     }
 
-    public void buttonMore() throws InterruptedException {
-        moreButton.click();
-        Thread.sleep(1000);
+    public void buttonMore() {
+         moreButton.click();
+       waitTime(1000);
     }
 
-    public void buttonAllMail() throws InterruptedException {
+    public void buttonAllMail()  {
         allMailButton.click();
-        Thread.sleep(1000);
+        waitTime(1000);
     }
 
     public void userProfileButtonClick() {
         userProfileButton.click();
     }
 
-    public void clickSelect() throws InterruptedException {
+    public void clickSelect(){
         selectButton.click();
-        Thread.sleep(1000);
+        waitTime(1000);
     }
 
-    public void clickDelete() throws InterruptedException {
+    public void clickDelete(){
         deleteButton.click();
-        Thread.sleep(1000);
+        waitTime(1000);
     }
 
-    public void clickOk() throws InterruptedException {
+    public void clickOk(){
         okButton.click();
-        Thread.sleep(1000);
+        waitTime(1000);
     }
 
-    public void clickTrash() throws InterruptedException {
+    public void clickTrash() {
         trashButton.click();
-        Thread.sleep(1000);
+       waitTime(1000);
     }
 
-    public void deleteForever() throws InterruptedException {
+    public void deleteForever() {
         deleteForeverButton.click();
-        Thread.sleep(3000);
+       waitTime(1000);
     }
 
     public void deleteMail() throws InterruptedException {

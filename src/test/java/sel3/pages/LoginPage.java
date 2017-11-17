@@ -3,16 +3,8 @@ package sel3.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class  LoginPage {
-
-    public WebDriver driver;
-
-    public LoginPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
-    }
+public class  LoginPage extends Page {
 
     @FindBy(xpath = ".//*[@id='identifierId']")
     public WebElement loginField;
@@ -26,24 +18,35 @@ public class  LoginPage {
     @FindBy(xpath = ".//*[@id='passwordNext']")
     public WebElement loginButtonNext;
 
+    public LoginPage(WebDriver driver) {
+        super(driver);
+    }
+
+
     public void inputLogin(String login) {
         loginField.sendKeys(login);
     }
 
     public void inputPassword(String password) {
         passwordField.sendKeys(password);
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        waitTime(1000);
     }
 
     public void clickLoginButton() {
         loginButton.click();
+
     }
 
     public void clickLoginButtonNext() {
         loginButtonNext.click();
     }
+
+    public void loginIntoMail(String login, String password) {
+        inputLogin(login);
+        clickLoginButton();
+        inputPassword(password);
+        clickLoginButtonNext();
+    }
 }
+
+

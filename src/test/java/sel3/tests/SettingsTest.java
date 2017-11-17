@@ -6,7 +6,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.AfterTest;
 import java.util.concurrent.TimeUnit;
 
-public class BeforeAfterTest {
+public class SettingsTest {
 
     public  WebDriver driver;
 
