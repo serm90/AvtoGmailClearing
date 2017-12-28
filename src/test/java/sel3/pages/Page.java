@@ -14,7 +14,7 @@ public class Page{
 
     public void waitTime(long millis){
         try{
-            Thread.sleep(1000);
+            Thread.sleep(millis);
         }catch (InterruptedException e){
             Thread.currentThread().interrupt();
         }
