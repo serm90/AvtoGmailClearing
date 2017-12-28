@@ -22,7 +22,6 @@ public class  LoginPage extends Page {
         super(driver);
     }
 
-
     public void inputLogin(String login) {
         loginField.sendKeys(login);
     }
@@ -30,11 +29,11 @@ public class  LoginPage extends Page {
     public void inputPassword(String password) {
         passwordField.sendKeys(password);
         waitTime(1000);
+
     }
 
     public void clickLoginButton() {
         loginButton.click();
-
     }
 
     public void clickLoginButtonNext() {

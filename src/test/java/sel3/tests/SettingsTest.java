@@ -15,7 +15,7 @@ public class SettingsTest {
 
     @BeforeTest
     public void setup() {
-        System.setProperty("webdriver.chrome.driver", "C://Users//serg-qa//Downloads/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C://Users//serg-qa//Downloads/install/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);

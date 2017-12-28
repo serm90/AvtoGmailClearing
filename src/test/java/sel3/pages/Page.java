@@ -14,8 +14,10 @@ public class Page{
 
     public void waitTime(long millis){
         try{
-            Thread.sleep(millis);
-        }catch (Exception e){}
+            Thread.sleep(1000);
+        }catch (InterruptedException e){
+            Thread.currentThread().interrupt();
+        }
     }
 
     public MailPage goToMailPage(){

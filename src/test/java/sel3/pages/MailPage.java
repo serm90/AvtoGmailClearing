@@ -6,11 +6,10 @@ import org.openqa.selenium.support.FindBy;
 
 public class MailPage extends Page {
 
-
-    @FindBy(xpath = ".//*[@class='gb_bb gbii']")
+    @FindBy(xpath = ".//*[@class='gb_ab gbii']")
     public WebElement userProfileButton;
 
-    @FindBy(xpath = ".//*[@class='gb_Db']")
+    @FindBy(xpath = ".//*[@class='gb_Cb']")
     public WebElement userProfile;
 
     @FindBy(xpath = ".//*[@class='CJ']")
@@ -86,7 +85,7 @@ public class MailPage extends Page {
        waitTime(1000);
     }
 
-    public void deleteMail() throws InterruptedException {
+    public void deleteMail()  {
         try {
             buttonMore();
             buttonAllMail();
@@ -101,11 +100,12 @@ public class MailPage extends Page {
                 }
             }
         } catch (Exception e){
+            Thread.currentThread().interrupt();
             System.out.println("Письма не удалены с папки - Все письма;");
         }
     }
 
-    public void deleteTrash() throws InterruptedException {
+    public void deleteTrash()  {
         try {
             clickTrash();
             while (true) {
