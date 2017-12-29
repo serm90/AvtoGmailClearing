@@ -23,13 +23,19 @@ public class  LoginPage extends Page {
     }
 
     public void inputLogin(String login) {
+        clearTextField(loginField);
         loginField.sendKeys(login);
     }
 
-    public void inputPassword(String password) {
-        passwordField.sendKeys(password);
-        waitTime(1000);
+    public void clearTextField(WebElement element){
+        element.clear();
+    }
 
+    public void inputPassword(String password) {
+        waiter(passwordField);
+        clearTextField(passwordField);
+        passwordField.sendKeys(password);
+        waiter(loginButtonNext);
     }
 
     public void clickLoginButton() {

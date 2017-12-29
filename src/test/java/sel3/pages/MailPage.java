@@ -30,16 +30,12 @@ public class MailPage extends Page {
     @FindBy(xpath = ".//button[@name='ok']")
     public WebElement okButton;
 
-    @FindBy(xpath = ".//*[@class='TC']")
-    public WebElement emptyInBox;
-
     @FindBy(xpath = ".//*[@gh='mtb']/div[1]/div[1]/div[2]/div[1]")
     public WebElement deleteForeverButton;
 
     public MailPage(WebDriver driver) {
         super(driver);
     }
-
 
     public String getUserMail() {
         String userMail = userProfile.getText();
@@ -48,12 +44,12 @@ public class MailPage extends Page {
 
     public void buttonMore() {
          moreButton.click();
-       waitTime(1000);
+         waiter(allMailButton);
     }
 
     public void buttonAllMail()  {
         allMailButton.click();
-        waitTime(1000);
+        waiter(selectButton);
     }
 
     public void userProfileButtonClick() {
@@ -61,31 +57,30 @@ public class MailPage extends Page {
     }
 
     public void clickSelect(){
+        waitTime(500);
         selectButton.click();
-        waitTime(1000);
     }
 
     public void clickDelete(){
         deleteButton.click();
-        waitTime(1000);
+        waiter(okButton);
     }
 
     public void clickOk(){
         okButton.click();
-        waitTime(1000);
     }
 
     public void clickTrash() {
         trashButton.click();
-       waitTime(1000);
+        waiter(selectButton);
     }
 
     public void deleteForever() {
         deleteForeverButton.click();
-       waitTime(1000);
+        waitTime(1000);
     }
 
-    public void deleteMail()  {
+    public void deleteMail(){
         try {
             buttonMore();
             buttonAllMail();
@@ -100,17 +95,16 @@ public class MailPage extends Page {
                 }
             }
         } catch (Exception e){
-            Thread.currentThread().interrupt();
-            System.out.println("Письма не удалены с папки - Все письма;");
+             System.out.println("Письма не удалены с папки - Все письма;");
         }
     }
 
-    public void deleteTrash()  {
+    public void deleteTrash(){
         try {
             clickTrash();
             while (true) {
                 clickSelect();
-                if (deleteForeverButton.isDisplayed()) {
+                 if (deleteForeverButton.isDisplayed()) {
                     deleteForever();
                 } else {
                     System.out.println("Письма удалены с папки - Корзина;");
