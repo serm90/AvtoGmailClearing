@@ -24,5 +24,4 @@ public class SettingsTest {
 
     @AfterTest
    public void tearDown(){driver.quit();}
-
 }

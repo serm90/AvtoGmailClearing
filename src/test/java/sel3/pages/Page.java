@@ -24,11 +24,19 @@ public class Page{
     }
 
     public void waiter (WebElement webElement) {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
+        WebDriverWait wait = new WebDriverWait(driver, 60);
         boolean element = wait.until(ExpectedConditions.visibilityOf(webElement)).isDisplayed();
+    }
+
+    public void clearTextField(WebElement element){
+        element.clear();
     }
 
     public MailPage goToMailPage(){
         return new MailPage(driver);
+    }
+
+    public void clickOnElement (WebElement webElement){
+        webElement.click();
     }
 }

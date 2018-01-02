@@ -42,53 +42,24 @@ public class MailPage extends Page {
         return userMail;
     }
 
-    public void buttonMore() {
-         moreButton.click();
-         waiter(allMailButton);
-    }
-
-    public void buttonAllMail()  {
-        allMailButton.click();
-        waiter(selectButton);
-    }
-
     public void userProfileButtonClick() {
         userProfileButton.click();
     }
 
-    public void clickSelect(){
-        waitTime(500);
-        selectButton.click();
-    }
-
-    public void clickDelete(){
-        deleteButton.click();
-        waiter(okButton);
-    }
-
-    public void clickOk(){
-        okButton.click();
-    }
-
-    public void clickTrash() {
-        trashButton.click();
-        waiter(selectButton);
-    }
-
-    public void deleteForever() {
-        deleteForeverButton.click();
-        waitTime(1000);
-    }
-
     public void deleteMail(){
         try {
-            buttonMore();
-            buttonAllMail();
+            clickOnElement(moreButton);
+            waiter(allMailButton);
+            clickOnElement(allMailButton);
+
             while (true) {
-                clickSelect();
+                waitTime(1000);
+                clickOnElement(selectButton);
+
                 if (deleteButton.isDisplayed()) {
-                    clickDelete();
-                    clickOk();
+                    clickOnElement(deleteButton);
+                    waiter(okButton);
+                    clickOnElement(okButton);
                 } else {
                     System.out.println("Письма удалены с папки - Все письма;");
                     break;
@@ -101,11 +72,15 @@ public class MailPage extends Page {
 
     public void deleteTrash(){
         try {
-            clickTrash();
+            waiter(trashButton);
+            clickOnElement(trashButton);
+
             while (true) {
-                clickSelect();
+                waitTime(1000);
+                clickOnElement(selectButton);
                  if (deleteForeverButton.isDisplayed()) {
-                    deleteForever();
+                    clickOnElement(deleteForeverButton);
+                    waitTime(1000);
                 } else {
                     System.out.println("Письма удалены с папки - Корзина;");
                     break;
@@ -115,6 +90,5 @@ public class MailPage extends Page {
             System.out.println("Письма не удалены с папки - Корзина;");
         }
     }
-
 }
 

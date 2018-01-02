@@ -27,10 +27,6 @@ public class  LoginPage extends Page {
         loginField.sendKeys(login);
     }
 
-    public void clearTextField(WebElement element){
-        element.clear();
-    }
-
     public void inputPassword(String password) {
         waiter(passwordField);
         clearTextField(passwordField);
@@ -38,19 +34,12 @@ public class  LoginPage extends Page {
         waiter(loginButtonNext);
     }
 
-    public void clickLoginButton() {
-        loginButton.click();
-    }
-
-    public void clickLoginButtonNext() {
-        loginButtonNext.click();
-    }
-
     public void loginIntoMail(String login, String password) {
         inputLogin(login);
-        clickLoginButton();
+        clickOnElement(loginButton);
         inputPassword(password);
-        clickLoginButtonNext();
+        clickOnElement(loginButtonNext);
+
     }
 }
 
