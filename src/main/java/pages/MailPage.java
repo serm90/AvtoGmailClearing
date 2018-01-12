@@ -1,4 +1,4 @@
-package sel3.pages;
+package pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,7 +18,7 @@ public class MailPage extends Page {
     @FindBy(xpath = ".//*[@title='All Mail']")
     public WebElement allMailButton;
 
-    @FindBy(xpath = ".//*[@gh='mtb']/div[1]/div[1]/div[1]/*[@role='button']/div[@class='J-J5-Ji J-JN-M-I-Jm']")
+    @FindBy(xpath = ".//*[@gh='mtb']/div[1]/div[1]/div[1]/*[@role='button']/div[@class='J-J5-Ji J-JN-M-I-Jm']/span")
     public WebElement selectButton;
 
     @FindBy(xpath = ".//*[@data-tooltip='Delete']")
@@ -53,7 +53,6 @@ public class MailPage extends Page {
             clickOnElement(allMailButton);
 
             while (true) {
-                waitTime(1000);
                 clickOnElement(selectButton);
 
                 if (deleteButton.isDisplayed()) {
@@ -76,11 +75,10 @@ public class MailPage extends Page {
             clickOnElement(trashButton);
 
             while (true) {
-                waitTime(1000);
                 clickOnElement(selectButton);
                  if (deleteForeverButton.isDisplayed()) {
                     clickOnElement(deleteForeverButton);
-                    waitTime(1000);
+
                 } else {
                     System.out.println("Письма удалены с папки - Корзина;");
                     break;
@@ -90,5 +88,6 @@ public class MailPage extends Page {
             System.out.println("Письма не удалены с папки - Корзина;");
         }
     }
+
 }
 

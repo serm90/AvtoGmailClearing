@@ -1,7 +1,7 @@
 package sel3.tests;
 
 import org.testng.Assert;
-import sel3.pages.*;
+import pages.*;
 import org.testng.annotations.Test;
 
 public class DeleteMailTest extends SettingsTest {

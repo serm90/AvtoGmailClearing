@@ -1,5 +1,6 @@
-package sel3.pages;
+package pages;
 
+import com.sun.deploy.util.Waiter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -37,6 +38,8 @@ public class Page{
     }
 
     public void clickOnElement (WebElement webElement){
+        waitTime(1000);
         webElement.click();
-    }
+        }
+
 }
