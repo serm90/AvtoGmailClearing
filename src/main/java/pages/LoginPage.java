@@ -39,7 +39,6 @@ public class  LoginPage extends Page {
         clickOnElement(loginButton);
         inputPassword(password);
         clickOnElement(loginButtonNext);
-
     }
 }
 

@@ -74,7 +74,8 @@ public class MailPage extends Page {
             while (true) {
                 clickOnElement(selectButton);
                  if (deleteForeverButton.isDisplayed()) {
-                    clickOnElement(deleteForeverButton);
+                    waitTime(100);
+                     clickOnElement(deleteForeverButton);
                 } else {
                     System.out.println("Письма удалены с папки - Корзина;");
                     break;
