@@ -51,10 +51,8 @@ public class MailPage extends Page {
             clickOnElement(moreButton);
             waiter(allMailButton);
             clickOnElement(allMailButton);
-
             while (true) {
                 clickOnElement(selectButton);
-
                 if (deleteButton.isDisplayed()) {
                     clickOnElement(deleteButton);
                     waiter(okButton);
@@ -73,12 +71,10 @@ public class MailPage extends Page {
         try {
             waiter(trashButton);
             clickOnElement(trashButton);
-
             while (true) {
                 clickOnElement(selectButton);
                  if (deleteForeverButton.isDisplayed()) {
                     clickOnElement(deleteForeverButton);
-
                 } else {
                     System.out.println("Письма удалены с папки - Корзина;");
                     break;
@@ -88,6 +84,5 @@ public class MailPage extends Page {
             System.out.println("Письма не удалены с папки - Корзина;");
         }
     }
-
 }
 
