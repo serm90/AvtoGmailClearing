@@ -1,4 +1,4 @@
-package sel3.tests;
+package settings;
 
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.WebDriver;
@@ -6,6 +6,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.AfterTest;
 import java.util.concurrent.TimeUnit;
 
+//вынес в отдельный класс настройки теста
 public class SettingsTest {
 
     public  WebDriver driver;

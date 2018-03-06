@@ -16,19 +16,12 @@ public class Page {
         this.driver = driver;
     }
 
-    public void waitTime(long millis) {
-        try {
-            Thread.sleep(millis);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
-    }
-
     public void waiter(WebElement webElement) {
-
         try {
-            WebDriverWait wait = new WebDriverWait(driver, 10);
-            boolean element = wait.until(ExpectedConditions.visibilityOf(webElement)).isDisplayed();
+            WebDriverWait wait = new WebDriverWait(driver, 5);
+            wait.until(ExpectedConditions.visibilityOf(webElement)).isDisplayed();
+            wait.until(ExpectedConditions.elementToBeClickable(webElement));
+
         } catch (TimeoutException e) {
             e.getMessage();
             System.out.println("Елемент " + webElement + " не отображается");
@@ -44,9 +37,12 @@ public class Page {
     }
 
     public void clickOnElement(WebElement webElement) {
-        waitTime(1000);
+        waiter(webElement);
         webElement.click();
     }
 }
+
+
+
 
 

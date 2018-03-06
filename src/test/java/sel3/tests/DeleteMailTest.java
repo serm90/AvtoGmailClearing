@@ -3,6 +3,7 @@ package sel3.tests;
 import org.testng.Assert;
 import pages.*;
 import org.testng.annotations.Test;
+import settings.SettingsTest;
 
 public class DeleteMailTest extends SettingsTest {
 
@@ -25,5 +26,4 @@ public class DeleteMailTest extends SettingsTest {
         mailPage.deleteMail();
         mailPage.deleteTrash();
     }
-
 }

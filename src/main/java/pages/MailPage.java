@@ -9,7 +9,7 @@ public class MailPage extends Page {
     @FindBy(xpath = ".//*[@class='gb_ab gbii']")
     public WebElement userProfileButton;
 
-    @FindBy(xpath = ".//*[@class='gb_Cb']")
+    @FindBy(xpath = ".//*[@class='gb_Db']")
     public WebElement userProfile;
 
     @FindBy(xpath = ".//*[@class='CJ']")
@@ -33,6 +33,12 @@ public class MailPage extends Page {
     @FindBy(xpath = ".//*[@gh='mtb']/div[1]/div[1]/div[2]/div[1]")
     public WebElement deleteForeverButton;
 
+    @FindBy(xpath = ".//*[@gh='tm']/div/div[2]/div/span/div/span/span[2]")
+    public WebElement numberOfMailLocator;
+
+    @FindBy(xpath = ".//div[@gh='mtb']/..//div[@data-tooltip='Refresh']")
+    public WebElement refreshButton;
+
     public MailPage(WebDriver driver) {
         super(driver);
     }
@@ -49,39 +55,37 @@ public class MailPage extends Page {
     public void deleteMail(){
         try {
             clickOnElement(moreButton);
-            waiter(allMailButton);
             clickOnElement(allMailButton);
-            while (true) {
+            while (numberOfMailLocator.isDisplayed()) {
                 clickOnElement(selectButton);
                 if (deleteButton.isDisplayed()) {
                     clickOnElement(deleteButton);
-                    waiter(okButton);
                     clickOnElement(okButton);
-                } else {
-                    System.out.println("Письма удалены с папки - Все письма;");
-                    break;
+                    clickOnElement(refreshButton);
                 }
             }
+            System.out.println("Письма удалены с папки - Все письма;");
         } catch (Exception e){
+            e.getMessage();
+            e.printStackTrace();
              System.out.println("Письма не удалены с папки - Все письма;");
         }
     }
 
     public void deleteTrash(){
         try {
-            waiter(trashButton);
             clickOnElement(trashButton);
-            while (true) {
+            while (numberOfMailLocator.isDisplayed()) {
                 clickOnElement(selectButton);
                  if (deleteForeverButton.isDisplayed()) {
-                    waitTime(100);
                      clickOnElement(deleteForeverButton);
-                } else {
-                    System.out.println("Письма удалены с папки - Корзина;");
-                    break;
+                     clickOnElement(refreshButton);
                 }
             }
+            System.out.println("Письма удалены с папки - Корзина;");
         } catch (Exception e){
+            e.getMessage();
+            e.printStackTrace();
             System.out.println("Письма не удалены с папки - Корзина;");
         }
     }
