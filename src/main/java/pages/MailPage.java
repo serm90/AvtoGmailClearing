@@ -39,6 +39,9 @@ public class MailPage extends Page {
     @FindBy(xpath = ".//div[@gh='mtb']/..//div[@data-tooltip='Refresh']")
     public WebElement refreshButton;
 
+    @FindBy(xpath = ".//*[@class='nU n1']/a[contains(text(),'Spam')]")
+    public WebElement spamButton;
+
     public MailPage(WebDriver driver) {
         super(driver);
     }
@@ -52,6 +55,7 @@ public class MailPage extends Page {
         userProfileButton.click();
     }
 
+    //метод удаляет писма с папки ВСЕ ПИСЬМА
     public void deleteMail(){
         try {
             clickOnElement(moreButton);
@@ -71,7 +75,26 @@ public class MailPage extends Page {
              System.out.println("Письма не удалены с папки - Все письма;");
         }
     }
+    //метод очищает папку СПАМ
+    public void deleteSpam(){
+        try{
+            clickOnElement(spamButton);
+            while (numberOfMailLocator.isDisplayed()){
+                clickOnElement(selectButton);
+                if (deleteForeverButton.isDisplayed()){
+                    clickOnElement(deleteForeverButton);
+                    clickOnElement(refreshButton);
+                }
+            }
+            System.out.println("Папка Спам - очищена;");
+        }catch(Exception e){
+                e.getMessage();
+                e.printStackTrace();
+                System.out.println("Письма Спам - не очищена;");
+            }
+        }
 
+    //метод удаляет писма с папки КОРЗИНА
     public void deleteTrash(){
         try {
             clickOnElement(trashButton);

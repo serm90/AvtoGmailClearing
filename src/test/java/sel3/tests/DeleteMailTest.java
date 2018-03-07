@@ -24,6 +24,7 @@ public class DeleteMailTest extends SettingsTest {
 
         //удаление всех писем & чистка корзины
         mailPage.deleteMail();
+        mailPage.deleteSpam();
         mailPage.deleteTrash();
     }
 }
