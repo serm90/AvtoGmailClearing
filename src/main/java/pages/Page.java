@@ -20,7 +20,6 @@ public class Page {
     public void waiter(WebElement webElement) {
         try {
             WebDriverWait wait = new WebDriverWait(driver, 5);
-           // wait.until(ExpectedConditions.visibilityOf(webElement)).isDisplayed();
             wait.until(ExpectedConditions.elementToBeClickable(webElement));
         } catch (TimeoutException e) {
             e.getMessage();
@@ -36,7 +35,7 @@ public class Page {
         return new MailPage(driver);
     }
 
-    //метод ждет нажимаемое состояние элемента и нажимает на этот элемент
+    //метод нажимает на элемент
     public void clickOnElement(WebElement webElement) {
         waiter(webElement);
         webElement.click();

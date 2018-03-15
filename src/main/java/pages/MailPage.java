@@ -71,8 +71,7 @@ public class MailPage extends Page {
             System.out.println("Письма удалены с папки - Все письма;");
         } catch (Exception e){
             e.getMessage();
-            e.printStackTrace();
-             System.out.println("Письма не удалены с папки - Все письма;");
+            System.out.println("Письма не удалены с папки - Все письма;");
         }
     }
     //метод очищает папку СПАМ
@@ -89,7 +88,6 @@ public class MailPage extends Page {
             System.out.println("Папка Спам - очищена;");
         }catch(Exception e){
                 e.getMessage();
-                e.printStackTrace();
                 System.out.println("Письма Спам - не очищена;");
             }
         }
@@ -108,7 +106,6 @@ public class MailPage extends Page {
             System.out.println("Письма удалены с папки - Корзина;");
         } catch (Exception e){
             e.getMessage();
-            e.printStackTrace();
             System.out.println("Письма не удалены с папки - Корзина;");
         }
     }
