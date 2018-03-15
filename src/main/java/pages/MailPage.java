@@ -6,10 +6,10 @@ import org.openqa.selenium.support.FindBy;
 
 public class MailPage extends Page {
 
-    @FindBy(xpath = ".//*[@class='gb_ab gbii']")
+    @FindBy(xpath = ".//*[@class='gb_db gbii']")
     public WebElement userProfileButton;
 
-    @FindBy(xpath = ".//*[@class='gb_Db']")
+    @FindBy(xpath = ".//*[@class='gb_Ib']")
     public WebElement userProfile;
 
     @FindBy(xpath = ".//*[@class='CJ']")
