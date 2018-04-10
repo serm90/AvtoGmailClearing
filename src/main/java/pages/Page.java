@@ -46,6 +46,8 @@ public class Page {
         webElement.click();
     }
 
+
+    
     //проверка присутсвия в указанном месте почтовика
     public void validator(String pageTitle) {
 
