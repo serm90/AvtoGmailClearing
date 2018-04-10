@@ -1,8 +1,11 @@
 package pages;
 
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MailPage extends Page {
 
@@ -14,6 +17,9 @@ public class MailPage extends Page {
 
     @FindBy(xpath = ".//*[@class='CJ']")
     public WebElement moreButton;
+
+    @FindBy(xpath = ".//*[@class='CJ']")
+    public WebElement lessButton;
 
     @FindBy(xpath = ".//*[@title='All Mail']")
     public WebElement allMailButton;
@@ -39,8 +45,12 @@ public class MailPage extends Page {
     @FindBy(xpath = ".//div[@gh='mtb']/..//div[@data-tooltip='Refresh']")
     public WebElement refreshButton;
 
-    @FindBy(xpath = ".//*[@class='nU n1']/a[contains(text(),'Spam')]")
+    @FindBy(xpath = ".//*[@title='Spam']")
     public WebElement spamButton;
+
+    private String allMailPageTitile = "All Mail";
+    private String spamPageTitile = "Spam";
+    private String trashPageTitile = "Trash";
 
     public MailPage(WebDriver driver) {
         super(driver);
@@ -57,10 +67,12 @@ public class MailPage extends Page {
 
     //метод удаляет писма с папки ВСЕ ПИСЬМА
     public void deleteMail(){
-        try {
+         try {
             clickOnElement(moreButton);
             clickOnElement(allMailButton);
-            while (numberOfMailLocator.isDisplayed()) {
+            validator(allMailPageTitile);
+
+            while (waitForNumber(numberOfMailLocator)) {
                 clickOnElement(selectButton);
                 if (deleteButton.isDisplayed()) {
                     clickOnElement(deleteButton);
@@ -69,7 +81,9 @@ public class MailPage extends Page {
                 }
             }
             System.out.println("Письма удалены с папки - Все письма;");
-        } catch (Exception e){
+
+        }
+        catch (Exception e){
             e.getMessage();
             System.out.println("Письма не удалены с папки - Все письма;");
         }
@@ -77,8 +91,11 @@ public class MailPage extends Page {
     //метод очищает папку СПАМ
     public void deleteSpam(){
         try{
+            clickOnElement(lessButton);
+            clickOnElement(moreButton);
             clickOnElement(spamButton);
-            while (numberOfMailLocator.isDisplayed()){
+            validator(spamPageTitile);
+            while (waitForNumber(numberOfMailLocator)){
                 clickOnElement(selectButton);
                 if (deleteForeverButton.isDisplayed()){
                     clickOnElement(deleteForeverButton);
@@ -88,15 +105,18 @@ public class MailPage extends Page {
             System.out.println("Папка Спам - очищена;");
         }catch(Exception e){
                 e.getMessage();
-                System.out.println("Письма Спам - не очищена;");
+                System.out.println("Папка Спам - не очищена;");
             }
         }
 
     //метод удаляет писма с папки КОРЗИНА
     public void deleteTrash(){
         try {
+            clickOnElement(lessButton);
+            clickOnElement(moreButton);
             clickOnElement(trashButton);
-            while (numberOfMailLocator.isDisplayed()) {
+            validator(trashPageTitile);
+            while (waitForNumber(numberOfMailLocator)) {
                 clickOnElement(selectButton);
                  if (deleteForeverButton.isDisplayed()) {
                      clickOnElement(deleteForeverButton);
@@ -108,6 +128,18 @@ public class MailPage extends Page {
             e.getMessage();
             System.out.println("Письма не удалены с папки - Корзина;");
         }
+    }
+
+    //метод проверяет отображение писем в папаках
+    public boolean waitForNumber(WebElement element){
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        try{
+        boolean isDisplayed = wait.until(ExpectedConditions.visibilityOf(element)).isDisplayed();
+        }catch (TimeoutException te){
+        return false;
+        }
+        return true;
+
     }
 }
 
