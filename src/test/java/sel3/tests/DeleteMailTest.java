@@ -5,6 +5,8 @@ import pages.*;
 import org.testng.annotations.Test;
 import settings.SettingsTest;
 
+import java.util.concurrent.TimeUnit;
+
 public class DeleteMailTest extends SettingsTest {
 
     MailPage mailPage = null;

@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.awt.*;
+
 public class  LoginPage extends Page {
 
     @FindBy(xpath = ".//*[@id='identifierId']")
@@ -18,13 +20,15 @@ public class  LoginPage extends Page {
     @FindBy(xpath = ".//*[@id='passwordNext']")
     public WebElement loginButtonNext;
 
+    private String loginPageTitile = "Gmail";
+
     public LoginPage(WebDriver driver) {
         super(driver);
     }
 
     public void inputLogin(String login) {
-        clearTextField(loginField);
-        loginField.sendKeys(login);
+       clearTextField(loginField);
+       loginField.sendKeys(login);
     }
 
     public void inputPassword(String password) {
@@ -35,6 +39,7 @@ public class  LoginPage extends Page {
     }
 
     public void loginIntoMail(String login, String password) {
+        validator(loginPageTitile);
         inputLogin(login);
         clickOnElement(loginButton);
         inputPassword(password);
